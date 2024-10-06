@@ -61,18 +61,40 @@ router.get("/find/:id", async (req, res) => {
 });
 
 //Update automatic bid by user ID
-router.put("/findAndCancel/:id", async (req, res) => {
+// router.put("/findAndCancel/:id", async (req, res) => {
+//   try {
+//     const automaticBindByUserId = await Automatic.findByIdAndUpdate(
+//       req.params.id,
+//       {
+//         $set: { status: "Cancelled" },
+//       },
+//       { new: true }
+//     );
+//     res.status(200).json(automaticBindByUserId);
+//   } catch (error) {
+//     res.status(500).json(error);
+//   }
+// });
+
+// Delete automatic bid by user ID
+router.delete("/findAndCancel/:id", async (req, res) => {
   try {
-    const automaticBindByUserId = await Automatic.findByIdAndUpdate(
-      req.params.id,
-      {
-        $set: { status: "Cancelled" },
-      },
-      { new: true }
+    const deletedAutomaticBid = await Automatic.findByIdAndDelete(
+      req.params.id
     );
-    res.status(200).json(automaticBindByUserId);
+
+    if (!deletedAutomaticBid) {
+      return res.status(404).json({ message: "Automatic bid not found" });
+    }
+
+    res
+      .status(200)
+      .json({
+        message: "Automatic bid successfully deleted",
+        deletedAutomaticBid,
+      });
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json({ error: "Internal Server Error", details: error });
   }
 });
 
