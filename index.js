@@ -104,10 +104,10 @@ app.use("/conversation", conversationRoute);
 app.use("/message", messageRoute);
 app.use("/automatic", automaticRoute);
 
-app.use(express.static(path.join(__dirname, "./Auction_React/build")));
+app.use(express.static(path.join(__dirname, "./client/build")));
 
 app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./Auction_React/build/index.html"));
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 server.listen(5000, () => {
