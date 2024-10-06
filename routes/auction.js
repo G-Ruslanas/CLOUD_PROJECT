@@ -27,6 +27,7 @@ const upload = multer({
 
 // Create new Auction with image upload
 router.post("/", async (req, res) => {
+  console.log(req);
   console.log(req.body);
   const newAuction = new Auction({
     ...req.body,
@@ -125,7 +126,7 @@ router.put("/check", async (req, res) => {
 });
 
 //Auction update with image upload
-router.put("/update", upload.single("auctionImage"), async (req, res) => {
+router.put("/update", async (req, res) => {
   const errors = [];
   const currentFullDate = new Date();
   const startFullDate = new Date(
@@ -170,7 +171,7 @@ router.put("/update", upload.single("auctionImage"), async (req, res) => {
           { _id: req.body.id },
           {
             $set: req.body,
-            img: req.file.filename,
+            // img: req.file.filename,
             user_id: req.body.seller,
             desc: req.body.description,
             valid: "Pending",
