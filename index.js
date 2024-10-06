@@ -13,6 +13,7 @@ const conversationRoute = require("./routes/conversation");
 const messageRoute = require("./routes/message");
 const automaticRoute = require("./routes/automatic");
 const path = require("path");
+const morgan = require("morgan");
 
 const cors = require("cors");
 
@@ -38,6 +39,7 @@ mongoose
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(morgan("dev"));
 
 app.use(
   cors({
