@@ -165,7 +165,7 @@ router.put("/update", async (req, res) => {
     );
   }
 
-  console.logs(errors);
+  console.log(errors);
   if (errors.length === 0) {
     try {
       const updatedAuction = await Auction.findByIdAndUpdate(
