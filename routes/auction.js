@@ -126,6 +126,8 @@ router.put("/check", async (req, res) => {
 
 //Auction update with image upload
 router.put("/update", async (req, res) => {
+  console.log("Update");
+  console.log(req.body);
   const errors = [];
   const currentFullDate = new Date();
   const startFullDate = new Date(
@@ -165,32 +167,17 @@ router.put("/update", async (req, res) => {
 
   if (errors.length === 0) {
     try {
-      if (req.file) {
-        const updatedAuction = await Auction.findByIdAndUpdate(
-          { _id: req.body.id },
-          {
-            $set: req.body,
-            // img: req.file.filename,
-            user_id: req.body.seller,
-            desc: req.body.description,
-            valid: "Pending",
-          },
-          { new: true }
-        );
-        res.status(200).json(updatedAuction);
-      } else {
-        const updatedAuction = await Auction.findByIdAndUpdate(
-          { _id: req.body.id },
-          {
-            $set: req.body,
-            user_id: req.body.seller,
-            desc: req.body.description,
-            valid: "Pending",
-          },
-          { new: true }
-        );
-        res.status(200).json(updatedAuction);
-      }
+      const updatedAuction = await Auction.findByIdAndUpdate(
+        { _id: req.body.id },
+        {
+          $set: req.body,
+          user_id: req.body.seller,
+          desc: req.body.description,
+          valid: "Pending",
+        },
+        { new: true }
+      );
+      res.status(200).json(updatedAuction);
     } catch (error) {
       res.status(500).json(error);
     }
