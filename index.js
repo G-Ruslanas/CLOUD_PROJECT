@@ -32,9 +32,7 @@ const { addUser, removeUser, getUser } = require("./users");
 const exp = require("constants");
 
 mongoose
-  .connect(
-    "mongodb+srv://Ruslanas:uHVXeVyKo9jh793R@cluster1.bfmig.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1"
-  )
+  .connect(process.env.MONGO_URL)
   .then(() => console.log("DB Connection Successfully"))
   .catch((error) => console.log(error));
 
