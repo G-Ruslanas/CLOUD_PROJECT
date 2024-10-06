@@ -43,6 +43,8 @@ router.get(
 
 //Login user
 router.post("/login", (req, res, next) => {
+  console.log(req);
+  console.log(req.body);
   passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
     if (!user) res.send("User with specified credentials not found!");
@@ -57,6 +59,8 @@ router.post("/login", (req, res, next) => {
 
 //Register user
 router.post("/register", (req, res) => {
+  console.log(req);
+  console.log(req.body);
   User.findOne(
     { $or: [{ username: req.body.username }, { email: req.body.email }] },
     async (err, doc) => {
