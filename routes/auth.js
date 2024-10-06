@@ -26,7 +26,7 @@ router.get("/login/success", (req, res) => {
 //Logout user
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("http://localhost:3000");
+  res.redirect("http://cloud-project-stjl.onrender.com:3000");
 });
 
 //Google auth
@@ -36,7 +36,7 @@ router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: "http://localhost:3000/",
+    successRedirect: "http://cloud-project-stjl.onrender.com:3000/",
     failureRedirect: "/login/failed",
   })
 );

@@ -41,7 +41,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "http://cloud-project-stjl.onrender.com:3000",
     credentials: true,
   })
 );
