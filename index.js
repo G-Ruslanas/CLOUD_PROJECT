@@ -43,7 +43,7 @@ app.use(morgan("dev"));
 
 app.use(
   cors({
-    origin: "http://cloud-project-stjl.onrender.com:3000",
+    origin: "https://cloud-project-stjl.onrender.com:3000",
     credentials: true,
   })
 );
