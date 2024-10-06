@@ -27,12 +27,14 @@ const upload = multer({
 
 // Create new Auction with image upload
 router.post("/", upload.single("auctionImage"), async (req, res) => {
+  console.log(req.body);
   const newAuction = new Auction({
     ...req.body,
     img: req.file.filename,
     user_id: req.body.seller,
     desc: req.body.description,
   });
+  console.log(newAuction);
   try {
     await newAuction.save((err) => {
       return res.send(err);
