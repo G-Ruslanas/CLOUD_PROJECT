@@ -79,9 +79,12 @@ router.get("/find/:id", async (req, res) => {
 // Delete automatic bid by user ID
 router.delete("/findAndCancel/:id", async (req, res) => {
   try {
+    console.log(req.params.id);
     const deletedAutomaticBid = await Automatic.findByIdAndDelete(
       req.params.id
     );
+    console.log(deletedAutomaticBid);
+
     res.status(200).json({
       message: "Automatic bid successfully deleted",
       deletedAutomaticBid,
