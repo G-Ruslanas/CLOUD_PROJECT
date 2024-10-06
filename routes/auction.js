@@ -165,6 +165,7 @@ router.put("/update", async (req, res) => {
     );
   }
 
+  console.logs(errors);
   if (errors.length === 0) {
     try {
       const updatedAuction = await Auction.findByIdAndUpdate(
@@ -177,11 +178,14 @@ router.put("/update", async (req, res) => {
         },
         { new: true }
       );
+      console.log(updatedAuction);
       res.status(200).json(updatedAuction);
     } catch (error) {
+      console.log(error);
       res.status(500).json(error);
     }
   } else {
+    console.log(errors);
     res.send(errors);
   }
 });
