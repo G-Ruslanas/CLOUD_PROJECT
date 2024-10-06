@@ -49,7 +49,7 @@ const AuctionSchema = new mongoose.Schema(
         message: "Purchase price should be a higher than bid start",
       },
     },
-    img: { type: String, required: true },
+    img: { type: String },
     status: { type: Boolean, default: true },
     message: { type: String, default: "" },
     valid: { type: String, default: "Pending" },
