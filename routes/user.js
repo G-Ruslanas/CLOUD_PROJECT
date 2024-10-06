@@ -9,7 +9,7 @@ const whiteList = ["image/png", "image/jpeg", "image/jpg"];
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, path.join(__dirname, "../../Auction_React/public/uploads"));
+    callback(null, path.join(__dirname, "./uploads"));
   },
   filename: (req, file, callback) => {
     const ext = file.mimetype.split("/")[1];
