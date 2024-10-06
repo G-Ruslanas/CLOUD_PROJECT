@@ -26,7 +26,7 @@ const upload = multer({
 });
 
 // Create new Auction with image upload
-router.post("/", upload.single("auctionImage"), async (req, res) => {
+router.post("/", async (req, res) => {
   const newAuction = new Auction({
     ...req.body,
     // img: req.file.filename,

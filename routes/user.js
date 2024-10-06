@@ -77,7 +77,7 @@ router.put("/modify", async (req, res) => {
 });
 
 //Update user profile
-router.put("/update", upload.single("profileImage"), async (req, res) => {
+router.put("/update", async (req, res) => {
   let errors = [];
 
   //Email sender
